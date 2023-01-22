@@ -17,11 +17,14 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     @yield('style')
 
 </head>
 
 <body id="page-top">
+
+@include('sweetalert::alert')
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -53,13 +56,13 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{route('get_list_route')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Rutas</span>
             </a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{route('get_list_client')}}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Clientes</span>
             </a>
@@ -312,12 +315,9 @@
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
-<!-- Page level plugins -->
-<script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
+
 
 <!-- Page level custom scripts -->
-<script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 <script src="{{asset('js/jquery.validate.min.js')}}"></script>
 @yield('script')
 </body>
