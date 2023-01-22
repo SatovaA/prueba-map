@@ -17,8 +17,13 @@ $(document).ready(function () {
                 },
                 phone: {
                     required: true,
+                    maxlength: 10,
+                    minlength: 10,
                 },
                 status: {
+                    required: true,
+                },
+                document: {
                     required: true,
                 },
 
@@ -34,13 +39,18 @@ $(document).ready(function () {
                     required: "El campo Pais es requerido",
                 },
                 idRoute: {
-                    required: "El campo Pais es requerido",
+                    required: "El campo Ciudad es requerido",
                 },
                 phone: {
                     required: "El campo Telefono es requerido",
+                    maxlength: "Maximo de numeros 10",
+                    minlength: "El número debe ser de 10 digitos",
                 },
                 status: {
                     required: "El campo Estado es requerido",
+                },
+                document: {
+                    required: "El campo Documento es requerido",
                 },
             }
         });

@@ -14,6 +14,7 @@ class Client extends Model
     protected $primaryKey='idClient';
 
     protected $fillable = [
+        'document',
         'name',
         'surname',
         'phone',

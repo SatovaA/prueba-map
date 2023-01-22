@@ -69,6 +69,7 @@ class ClientController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'document' => 'required',
                 'surname' => 'required',
                 'idCountry' => 'required',
                 'phone' => 'required',
@@ -128,6 +129,7 @@ class ClientController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+                'document' => 'required',
                 'surname' => 'required',
                 'idCountry' => 'required',
                 'phone' => 'required',

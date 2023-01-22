@@ -10,12 +10,16 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Crear peliculas</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Editar cliente</h6>
             </div>
             <div class="card-body">
                 <form action="{{route('put_client', $id)}}" method="POST" id="formClient">
                     @csrf
                     {!! Form::hidden('_method', 'PUT') !!}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Numero Documento</label>
+                        <input type="text" class="form-control" id="document" name="document" value="{{$client->document}}" required>
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nombre</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{$client->name}}" required>

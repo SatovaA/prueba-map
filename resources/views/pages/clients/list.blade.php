@@ -20,6 +20,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th scope="col">Documento</th>
                         <th scope="col">Nombres</th>
                         <th scope="col">Telefono</th>
                         <th scope="col">Pais</th>
@@ -32,6 +33,7 @@
                     <tbody>
                     @foreach($clients as $client)
                         <tr>
+                            <td>{{$client->document}}</td>
                             <td>{{$client->name .' '. $client->surname}}</td>
                             <td>{{$client->phone}}</td>
                             <td>{{$client->nameCountry}}</td>
