@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Route extends Model
+class Client extends Model
 {
     use HasFactory;
 
-    protected $table = 'routes';
+    protected $table = 'clients';
 
-    protected $primaryKey='idRoute';
+    protected $primaryKey='idClient';
 
     protected $fillable = [
-        'idCity',
-        'latitude',
-        'length',
-        'status',
+        'name',
+        'surname',
+        'phone',
+        'idRoute',
     ];
 }
