@@ -7,6 +7,11 @@ use App\Models\Route;
 
 class ClientEntity
 {
+    /**
+     * Metodo para guardar informacion en la base de datos tabla Clientes
+     * @param $request
+     * @return void
+     */
     public function createClient($request)
     {
         $client = new Client();
@@ -18,6 +23,10 @@ class ClientEntity
         $client->save();
     }
 
+    /**
+     * Trae todos los registros de clientes
+     * @return mixed
+     */
     public function allClient()
     {
         return Client::join('routes', 'routes.idRoute','=', 'clients.idRoute')
@@ -28,6 +37,11 @@ class ClientEntity
             ->get();
     }
 
+    /**
+     * Trae registros por clave primaria
+     * @param $id
+     * @return mixed
+     */
     public function clientEdit($id)
     {
         return Client::join('routes', 'routes.idRoute','=', 'clients.idRoute')
@@ -38,6 +52,12 @@ class ClientEntity
             ->first();
     }
 
+    /**
+     * Metodo para realizar actualizacion
+     * @param $request
+     * @param $id
+     * @return void
+     */
     public function updateClient($request, $id)
     {
         $client = Client::find($id);

@@ -6,6 +6,11 @@ use App\Models\Route;
 
 class RouteEntity
 {
+    /**
+     * Metodo de creacion de registros
+     * @param $request
+     * @return void
+     */
     public function createRoute($request)
     {
         $route = new Route();
@@ -16,6 +21,10 @@ class RouteEntity
         $route->save();
     }
 
+    /**
+     * Trae todas las rutas registradas
+     * @return mixed
+     */
     public function allRoutes()
     {
         return Route::join('cities', 'cities.idCity', '=', 'routes.idCity')
@@ -25,6 +34,11 @@ class RouteEntity
             ->get();
     }
 
+    /**
+     * Trae las rutas relacionadas a un cliente
+     * @param $id
+     * @return mixed
+     */
     public function coordinatesMap($id)
     {
         return Route::join('clients', 'clients.idRoute','=', 'routes.idRoute')
@@ -36,6 +50,11 @@ class RouteEntity
             ->first();
     }
 
+    /**
+     * Metodo para realizar traer la informacion de rutas por id
+     * @param $id
+     * @return mixed
+     */
     public function formEditRoute($id)
     {
         return Route::join('cities', 'cities.idCity', '=', 'routes.idCity')
@@ -46,6 +65,12 @@ class RouteEntity
             ->first();
     }
 
+    /**
+     * Metodo para realizar actualizacion
+     * @param $request
+     * @param $id
+     * @return void
+     */
     public function updateRoute($request, $id)
     {
         $route = Route::find($id);

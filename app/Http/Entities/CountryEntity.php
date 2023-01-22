@@ -13,6 +13,7 @@ class CountryEntity
     }
 
     /**
+     * Metodo para traer las ciudades por pais
      * @param $id
      * @return mixed
      */
@@ -22,6 +23,7 @@ class CountryEntity
     }
 
     /**
+     * Metodo para trae ciudades ligadas a la rutas
      * @param $id
      * @return mixed
      */

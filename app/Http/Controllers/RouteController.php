@@ -41,7 +41,7 @@ class RouteController extends Controller
     }
 
     /**
-     * Metodo para guardar paises
+     * Metodo para guardar rutas
      * @param Request $request
      * @return RedirectResponse
      */
@@ -71,6 +71,7 @@ class RouteController extends Controller
     }
 
     /**
+     * Metodo para traer la ciudades relacionadas a pais
      * @param $id
      * @return JsonResponse
      */
@@ -80,6 +81,11 @@ class RouteController extends Controller
         return response()->json($cities);
     }
 
+    /**
+     * Metodo para pintar formulario de edicion
+     * @param $id
+     * @return Application|Factory|View
+     */
     public function formEdit($id)
     {
         $route = $this->routeEntity->formEditRoute($id);
@@ -91,6 +97,12 @@ class RouteController extends Controller
         return view('pages.routes.edit', compact('route', 'countries', 'cities', 'id'));
     }
 
+    /**
+     * Metodo para guardar registros nuevos
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     */
     public function putRoute(Request $request, $id): RedirectResponse
     {
         try {

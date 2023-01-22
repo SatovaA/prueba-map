@@ -20,6 +20,7 @@ class ClientController extends Controller
     private $clientEntity;
     private $routeEntity;
 
+
     public function __construct()
     {
         $this->countryEntity = new CountryEntity();
@@ -27,6 +28,10 @@ class ClientController extends Controller
         $this->routeEntity = new RouteEntity();
     }
 
+    /**
+     * Metodo para listar los clientes
+     * @return Application|Factory|View
+     */
     public function index()
     {
         $clients = $this->clientEntity->allClient();
@@ -44,6 +49,7 @@ class ClientController extends Controller
     }
 
     /**
+     * Metodo para traer informacion de la ciudad relacionadas a las rutas
      * @param $id
      * @return JsonResponse
      */
@@ -53,6 +59,11 @@ class ClientController extends Controller
         return response()->json($cities);
     }
 
+    /**
+     * Metodo de creacion de registros
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function postCreate(Request $request): RedirectResponse
     {
         try {
@@ -78,6 +89,11 @@ class ClientController extends Controller
         }
     }
 
+    /**
+     * Metodo para pintar el formulario de edicio
+     * @param $id
+     * @return Application|Factory|View
+     */
     public function formEdit($id)
     {
         $client = $this->clientEntity->clientEdit($id);
@@ -89,6 +105,11 @@ class ClientController extends Controller
         return view('pages.clients.edit', compact('client', 'countries', 'cities', 'id'));
     }
 
+    /**
+     * Metodo para pintar la informacion del mapa por cliente
+     * @param $id
+     * @return Application|Factory|View
+     */
     public function viewMap($id)
     {
         $coordinates = $this->routeEntity->coordinatesMap($id);
@@ -96,6 +117,12 @@ class ClientController extends Controller
         return view('maps', compact('coordinates', 'id'));
     }
 
+    /**
+     * Metodo para realizar actualizacion de registros
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     */
     public function putEditClient(Request $request, $id): RedirectResponse
     {
         try {
