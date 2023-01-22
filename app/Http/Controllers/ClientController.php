@@ -67,16 +67,26 @@ class ClientController extends Controller
             if (!$validator->fails()) {
                 $this->clientEntity->createClient($request);
                 alert()->success('Exitoso', 'La información se registro correctamente');
-                return redirect()->route('get_list_route');
+                return redirect()->route('get_list_client');
             } else {
                 alert()->info('Notificación', 'Existen campos vacios, por favor verifique!!');
                 return Redirect::back();
             }
         }catch (\Exception $e) {
-            dd($e->getMessage());
             alert()->error('Notificación', 'Existe un error, comuniquese con administracion.');
             return Redirect::back();
         }
+    }
+
+    public function formEdit($id)
+    {
+        $client = $this->clientEntity->clientEdit($id);
+        $idCity = $client->idCity;
+
+        $countries = $this->countryEntity->allCountries();
+        $cities = $this->countryEntity->allCities($idCity);
+
+        return view('pages.clients.edit', compact('client', 'countries', 'cities', 'id'));
     }
 
     public function viewMap($id)
@@ -86,9 +96,28 @@ class ClientController extends Controller
         return view('maps', compact('coordinates'));
     }
 
-    public function jsonCoordinates($id): JsonResponse
+    public function putEditClient(Request $request, $id): RedirectResponse
     {
-        $cities = $this->routeEntity->coordinatesMap($id);
-        return response()->json($cities);
+        try {
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'surname' => 'required',
+                'idCountry' => 'required',
+                'phone' => 'required',
+                'status' => 'required'
+            ]);
+
+            if (!$validator->fails()) {
+                $this->clientEntity->updateClient($request, $id);
+                alert()->success('Exitoso', 'La información se registro correctamente');
+                return redirect()->route('get_list_client');
+            } else {
+                alert()->info('Notificación', 'Existen campos vacios, por favor verifique!!');
+                return Redirect::back();
+            }
+        }catch (\Exception $e) {
+            alert()->error('Notificación', 'Existe un error, comuniquese con administracion.');
+            return Redirect::back();
+        }
     }
 }

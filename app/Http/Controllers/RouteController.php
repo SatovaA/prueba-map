@@ -91,7 +91,7 @@ class RouteController extends Controller
         return view('pages.routes.edit', compact('route', 'countries', 'cities', 'id'));
     }
 
-    public function putCountry(Request $request, $id): RedirectResponse
+    public function putRoute(Request $request, $id): RedirectResponse
     {
         try {
             $validator = Validator::make($request->all(), [
