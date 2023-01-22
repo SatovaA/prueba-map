@@ -93,7 +93,7 @@ class ClientController extends Controller
     {
         $coordinates = $this->routeEntity->coordinatesMap($id);
 
-        return view('maps', compact('coordinates'));
+        return view('maps', compact('coordinates', 'id'));
     }
 
     public function putEditClient(Request $request, $id): RedirectResponse

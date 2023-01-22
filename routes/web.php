@@ -15,11 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('list-routes', [RouteController::class, 'index'])->name('get_list_route');
+Route::get('/', [RouteController::class, 'index'])->name('get_list_route');
 Route::get('form-register-routes', [RouteController::class, 'formCreate'])->name('get_register_route');
 Route::get('form-edit-routes/{id}', [RouteController::class, 'formEdit'])->name('get_edit_route');
 Route::put('edit-route/{id}', [RouteController::class, 'putRoute'])->name('put_route');

@@ -1,3 +1,8 @@
+@php
+ $hiddenMenu = true;
+ $idMapa = $id;
+@endphp
+
 @extends('layouts.app')
 
 @section('style')
